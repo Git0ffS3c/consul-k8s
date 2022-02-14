@@ -93,7 +93,7 @@ func CheckStaticServerConnection(t *testing.T, options *k8s.KubectlOptions, expe
 func CheckStaticServerConnectionMultipleFailureMessages(t *testing.T, options *k8s.KubectlOptions, expectSuccess bool, failureMessages []string, curlArgs ...string) {
 	t.Helper()
 
-	retrier := &retry.Timer{Timeout: 80 * time.Second, Wait: 2 * time.Second}
+	retrier := &retry.Timer{Timeout: 200 * time.Second, Wait: 2 * time.Second}
 
 	args := []string{"exec", "deploy/" + staticClientName, "-c", staticClientName, "--", "curl", "-vvvsSf"}
 	args = append(args, curlArgs...)
